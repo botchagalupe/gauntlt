@@ -1,8 +1,30 @@
 require "gauntlt/version"
 
 require 'rubygems'
+
+require 'gherkin'
+
+gauntlt_lang = {
+  "name"             =>"Gauntlt",
+  "native"           =>"Gauntlt",
+  "feature"          =>"Attack",
+  "background"       =>"Preparation",
+  "scenario"         =>"Tactic",
+  "scenario_outline" =>"Tactic Outline",
+  "examples"         =>"Examples",
+  "given"            =>"*|Given",
+  "when"             =>"*|When",
+  "then"             =>"*|Then",
+  "and"              =>"*|And",
+  "but"              =>"*|But"
+}
+
+Gherkin::I18n::LANGUAGES = {'en-gauntlt' => gauntlt_lang}
+
+
 require 'cucumber'
 require 'gauntlt/attack'
+
 
 module Gauntlt
   CURRENT_DIR = if defined?(Pathname) # ruby 1.9
@@ -37,3 +59,4 @@ module Gauntlt
     end
   end
 end
+

@@ -4,13 +4,13 @@ Feature: nmap attack
     Given an attack "nmap" exists
     And a file named "nmap.attack" with:
     """
-    Feature: nmap attacks
+    Attack: nmap
 
-      Background:
+      Preparation:
         Given "nmap" is installed
         And the target hostname is "google.com"
 
-      Scenario: Verify server is available on standard web ports
+      Tactic: Verify server is available on standard web ports
         When I launch an "nmap" attack with:
           \"\"\"
           nmap -p 80,443 <hostname>
@@ -22,7 +22,7 @@ Feature: nmap attack
           \"\"\"
 
       @slow
-      Scenario: Detect OS
+      Tactic: Detect OS
         When I launch an "nmap" attack with:
           \"\"\"
           nmap -sV -p80 -PN <hostname>
