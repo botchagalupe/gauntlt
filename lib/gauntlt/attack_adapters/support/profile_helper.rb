@@ -7,11 +7,22 @@ module Gauntlt
         @hostname
       end
 
+      def tcp_ping_ports
+        #raise "No tcp_ping_ports defined" if @tcp_ping_ports.nil?
+
+        @tcp_ping_ports
+      end
+
       def set_hostname(s)
         @hostname = s
+      end
+
+      def set_tcp_ping_ports(s)
+        @tcp_ping_ports = s
       end
     end
   end
 end
 
 World(Gauntlt::Support::ProfileHelper)
+
