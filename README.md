@@ -6,7 +6,7 @@ gauntlt is a ruggedization framework
 
 The gauntlt project is under active development and is not ready for production use but we are looking for community feedback and involvement on the project.  Please file issues via github and follow the project on twitter: [@gauntlt](https://twitter.com/gauntlt).
 
-Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gauntlt_group).
+Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gauntlt_group) or find us on irc at [#gauntlt](http://webchat.freenode.net/?channels=gauntlt) (irc.freenode.net).
 
 ## GET STARTED
 
@@ -95,10 +95,10 @@ Below are some tools we are targeting but don't let that stop you from adding yo
   * [w3af] [w3af]
   * [arachni] [arachni]
 
-Have questions?  Ask us anything on the [gauntlt google group](http://bit.ly/gauntlt_group).
 
-## ADD A MODULE
-See the wiki on how to add a module into gauntlt. We would love your contributions.
+## ADD AN ATTACK ADAPTER
+
+See the wiki on how to add an attack adapter to gauntlt. We would love your contributions.
 
 ## LICENSE
 

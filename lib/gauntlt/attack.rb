@@ -4,6 +4,7 @@ require 'cucumber/cli/main'
 module Gauntlt
   class Attack
     class NotFound < Exception; end
+    class ExecutionFailed < Exception; end
 
     attr_accessor :name, :opts, :attack_file
 
@@ -26,7 +27,15 @@ module Gauntlt
     end
 
     def run
-      Cucumber::Cli::Main.execute([self.attack_file, '--strict', '--require', self.attacks_dir])
+      @out = StringIO.new ""
+
+      cli = Cucumber::Cli::Main.new([self.attack_file, '--strict', '--require', self.attacks_dir], @out)
+
+      if cli.execute! # cucumber failed, returning true
+        raise ExecutionFailed.new("Bad or undefined attack!")
+      else            # cucumber executed successfully, returning false
+        @out.string
+      end
     end
   end
 end
