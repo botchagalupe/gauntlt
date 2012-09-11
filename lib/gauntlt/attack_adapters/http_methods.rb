@@ -1,18 +1,22 @@
+require 'httparty'
+
 When /^"curl" is installed$/ do
   ensure_cli_installed("curl")
 end
 
 When /^I launch a "curl" attack$/ do
-  # curl custom output
-  # from:
-  #   http://beerpla.net/2010/06/10/how-to-display-just-the-http-response-code-in-cli-curl/
-  #
-  # for more output variables, see:
-  #   http://man.he.net/man1/curl
-  @raw_response = `curl --silent --output /dev/null --write-out "%{http_code}" "#{hostname}"`
-  @response = {
-    :code => @raw_response
-  }
+  url = URI::Generic.build(
+    :scheme => 'http',  # allow this to be set
+    :host   => hostname
+  ).to_s
+
+  # we need a rescue to capture the response
+  # due to the odd way HTTParty handles redirects
+  begin
+    @response = HTTParty.get(url, :no_follow => true)
+  rescue HTTParty::RedirectionTooDeep => e
+    @response = e.response
+  end
 end
 
 When /^I launch a "curl" attack with:$/ do |command|
